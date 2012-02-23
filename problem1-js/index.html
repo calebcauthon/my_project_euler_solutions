@@ -1,0 +1,144 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="../jasmine-1.1.0/jasmine.css" />
+</head>
+<html>
+<body>	
+<pre>
+Add all the natural numbers below one thousand that are multiples of 3 or 5.
+
+notes:
+Natural numbers are the non-positive counting numbers - 0,1,2..
+
+result: <span id="result"></span>
+
+</pre>
+</body>
+</html>
+<script type="text/javascript" src="../jasmine-1.1.0/jasmine.js"></script>
+<script type="text/javascript" src="../jasmine-1.1.0/jasmine-html.js"></script>
+
+<script type="text/javascript">
+
+	var getNaturalNumbersBetweenAndIncluding = function(min, max) {
+		var result = [];
+	
+		min = Math.floor(min - .1) + 1;
+		max = Math.floor(max)
+			
+		for(var i = min; i <= max; i++) {
+			result.push(i);
+		}
+			
+		return result;
+	}
+	var isMultipleOf = function(theNumber, theDivisor) {
+		return ((theNumber % theDivisor) == 0) ? true : false;
+	}
+	var isMultipleOf3 = function(theNumber) {
+		return isMultipleOf(theNumber, 3);
+	};
+	var isMultipleOf5 = function(theNumber) {
+		return isMultipleOf(theNumber, 5);
+	};
+
+	var naturalNumbers = getNaturalNumbersBetweenAndIncluding(0,999);
+	var sum = 0;
+	for(var i = 0; i < naturalNumbers.length; i++) {
+		var thisNaturalNumber = naturalNumbers[i];
+		if(isMultipleOf3(thisNaturalNumber) || isMultipleOf5(thisNaturalNumber))
+			sum += thisNaturalNumber
+	}
+	document.getElementById('result').innerHTML = sum;
+
+	describe('5-multiplier', function() {
+		it("get true with 5,10,15,500,125", function() {
+			expect(isMultipleOf5(5)).toBe(true);
+			expect(isMultipleOf5(10)).toBe(true);
+			expect(isMultipleOf5(15)).toBe(true);
+			expect(isMultipleOf5(500)).toBe(true);
+			expect(isMultipleOf5(125)).toBe(true);
+		});
+		it("get false with 6,11,16,501,126", function() {
+			expect(isMultipleOf5(6)).toBe(false);
+			expect(isMultipleOf5(11)).toBe(false);
+			expect(isMultipleOf5(501)).toBe(false);
+			expect(isMultipleOf5(126)).toBe(false);
+		});
+	});
+	describe('3-multiplier', function() { 
+		it("get true with 3,6,9,900,1233", function() {
+			expect(isMultipleOf3(3)).toBe(true);
+			expect(isMultipleOf3(6)).toBe(true);
+			expect(isMultipleOf3(9)).toBe(true);
+			expect(isMultipleOf3(900)).toBe(true);
+			expect(isMultipleOf3(1233)).toBe(true);		
+		});
+		it("get false with 4,7,10,901,1234", function() {
+			expect(isMultipleOf3(4)).toBe(false);
+			expect(isMultipleOf3(7)).toBe(false);
+			expect(isMultipleOf3(10)).toBe(false);
+			expect(isMultipleOf3(901)).toBe(false);
+			expect(isMultipleOf3(1234)).toBe(false);
+		});
+	});
+
+	describe('naturalNumbers', function() {
+		it("returns an array", function() {
+			expect(typeof(getNaturalNumbersBetweenAndIncluding(1,5))).toBe(typeof([]));
+		});			
+		it("returns the right numbers", function() {
+			var result = getNaturalNumbersBetweenAndIncluding(0,3);
+			expect(result[0]).toBe(0);
+			expect(result[1]).toBe(1);
+			expect(result[2]).toBe(2);
+			expect(result[3]).toBe(3);
+			expect(result.length).toBe(4);
+		});					
+		it("returns more of the right numbers", function() {
+			var result = getNaturalNumbersBetweenAndIncluding(100,103);
+			expect(result[0]).toBe(100);
+			expect(result[1]).toBe(101);
+			expect(result[2]).toBe(102);
+			expect(result[3]).toBe(103);
+			expect(result.length).toBe(4);
+		});
+		it("should only include integers", function() {
+			var result = getNaturalNumbersBetweenAndIncluding(.5, 2.5);
+			expect(result[0]).toBe(1);
+			expect(result[1]).toBe(2);
+			expect(result.length).toBe(2);
+		});
+	});
+
+	document.getElementById("failed-tests").innerText = failures;
+</script>
+
+<script type="text/javascript">
+    (function() {
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 1000;
+
+      var trivialReporter = new jasmine.TrivialReporter();
+
+      jasmineEnv.addReporter(trivialReporter);
+
+      jasmineEnv.specFilter = function(spec) {
+        return trivialReporter.specFilter(spec);
+      };
+
+      var currentWindowOnload = window.onload;
+
+      window.onload = function() {
+        if (currentWindowOnload) {
+          currentWindowOnload();
+        }
+        execJasmine();
+      };
+
+      function execJasmine() {
+        jasmineEnv.execute();
+      }
+
+    })();
+</script>
+
