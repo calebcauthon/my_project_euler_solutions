@@ -7,3 +7,11 @@ var getFactorsOf = function(theNumber) {
 	}
 	return factors;
 }
+
+var isPrime = function(theNumber) {
+	var factors = getFactorsOf(theNumber);
+	if(factors.length == 2)
+		return true;
+	else
+		return false;
+}
