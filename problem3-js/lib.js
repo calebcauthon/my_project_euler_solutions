@@ -6,7 +6,19 @@ var getFactorsOf = function(theNumber) {
 				factors.push(i);
 	}
 	return factors;
-}
+};
+
+var getPrimeFactorsOf = function(theNumber) {
+	var factors = [];
+	for(var i = 2; i <= theNumber; i++)
+	{
+		var isAFactor = (theNumber % i) == 0 ? true : false;
+		var isAPrimeNumber = isPrime(i);
+		if(isAFactor && isAPrimeNumber)
+			factors.push(i);
+	}
+	return factors;
+};
 
 var isPrime = function(theNumber) {
 	var factors = getFactorsOf(theNumber);
@@ -14,4 +26,6 @@ var isPrime = function(theNumber) {
 		return true;
 	else
 		return false;
-}
+};
+
+

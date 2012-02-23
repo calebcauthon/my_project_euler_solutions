@@ -12,6 +12,18 @@ describe("isPrime", function() {
 		expect(isPrime(7522)).toBe(false);
 	});
 });
+describe("getPrimeFactorsOf", function() {
+	it("should return [3] when 9 is input", function() {
+		var result = getPrimeFactorsOf(9);
+		expect(result.length).toBe(1);
+		expect(result[0]).toBe(3);
+	});
+	it("should return [5] when 125 is input", function() {
+		var result = getPrimeFactorsOf(125);
+		expect(result.length).toBe(1);
+		expect(result[0]).toBe(5);
+	});
+});	
 describe("getFactorsOf", function() {
 	it("should return [1,3,9] when 9 is input", function() {
 		var result = getFactorsOf(9);
