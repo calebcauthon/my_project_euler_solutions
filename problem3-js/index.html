@@ -23,14 +23,8 @@ result: <span id="result"></span>
 
 
 <script type="text/javascript">
-	var factors = [];//getFactorsOf(600851475143);
-	var largestPrimeFactor;
-	for(var i = 0; i < factors.length; i++) 
-	{
-		var thisFactor = factors[i];
-		if(isPrime(thisFactor))
-			largestPrimeFactor = thisFactor;
-	}
+	var largestPrimeFactor = getLargestPrimeFactor(600851475143);
+	
 
 	document.getElementById('result').innerHTML = largestPrimeFactor;
 </script>

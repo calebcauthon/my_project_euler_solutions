@@ -1,3 +1,11 @@
+describe("getLargestPrimeFactor", function() {
+	it("should be able to do a modulus on a large number", function() {
+		var mod = 600851475143 % 17;
+	});
+	it("should return 29 for 13195", function() {
+		expect(getLargestPrimeFactor(13195)).toBe(29);
+	});
+});
 describe("isPrime", function() {
 	it("should return true for 2,3,5,97", function() {
 		expect(isPrime(2)).toBe(true);
@@ -22,6 +30,15 @@ describe("getPrimeFactorsOf", function() {
 		var result = getPrimeFactorsOf(125);
 		expect(result.length).toBe(1);
 		expect(result[0]).toBe(5);
+	});
+	it("should have a second parameter to say whether it will return all or just the largest", function() {
+		var fullResult = getPrimeFactorsOf(13195);
+		var onlyLargest = getPrimeFactorsOf(13195, {
+			returnOnlyLargest: true
+		});		
+		console.log(fullResult);
+		expect(fullResult[2]).toBe(7);
+		expect(onlyLargest).toBe(29);
 	});
 });	
 describe("getFactorsOf", function() {
