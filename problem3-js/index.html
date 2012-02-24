@@ -1,0 +1,31 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="../jasmine-1.1.0/jasmine.css" />
+</head>
+<html>
+<body>	
+<pre>
+The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143?
+
+result: <span id="result"></span>
+
+</pre>
+</body>
+</html>
+
+<script type="text/javascript" src="../jasmine-1.1.0/jasmine.js"></script>
+<script type="text/javascript" src="../jasmine-1.1.0/jasmine-html.js"></script>
+
+<script type="text/javascript" src="lib.js"></script>
+<script type="text/javascript" src="spec.js"></script>
+<script type="text/javascript" src="../jasmine-1.1.0/autotest.js"></script>
+
+
+<script type="text/javascript">
+	var largestPrimeFactor = getLargestPrimeFactor(600851475143);
+	
+
+	document.getElementById('result').innerHTML = largestPrimeFactor;
+</script>
+
