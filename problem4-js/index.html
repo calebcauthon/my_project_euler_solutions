@@ -23,6 +23,19 @@ result: <span id="result"></span>
 
 
 <script type="text/javascript">
-	document.getElementById('result').innerHTML = '?';
+	var largestPalindrome = -1;
+	for(var i = 100; i < 1000; i++)
+	{
+		var firstNumber = i;
+		for(var j = 100; j < 1000; j++)
+		{
+			var secondNumber = j;
+
+			var result = firstNumber * secondNumber;
+			if(isPalindrome(result) && result > largestPalindrome)
+				largestPalindrome = result;
+		}
+	}		
+	document.getElementById('result').innerHTML = largestPalindrome;
 </script>
 
